@@ -3,11 +3,10 @@ package com.app.submission.submissionapp.controllers;
 import java.io.*;
 import java.time.LocalDate;
 
-import com.app.submission.submissionapp.mdels.Student;
+import com.app.submission.submissionapp.models.Student;
 import com.app.submission.submissionapp.services.StudentService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 public class StudentRegistration extends HttpServlet {
     StudentService service = StudentService.getInstance();

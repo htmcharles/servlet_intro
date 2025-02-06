@@ -1,10 +1,9 @@
 package com.app.submission.submissionapp.services;
 
-import com.app.submission.submissionapp.mdels.Student;
+import com.app.submission.submissionapp.models.Student;
 import com.app.submission.submissionapp.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.util.List;
 

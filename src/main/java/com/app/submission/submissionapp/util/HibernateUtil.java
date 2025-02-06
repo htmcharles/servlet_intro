@@ -1,7 +1,7 @@
 package com.app.submission.submissionapp.util;
 
 
-import com.app.submission.submissionapp.mdels.Student;
+import com.app.submission.submissionapp.models.Student;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
