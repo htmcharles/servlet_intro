@@ -2,6 +2,7 @@ package com.app.submission.submissionapp.controllers;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.app.submission.submissionapp.models.Student;
 import com.app.submission.submissionapp.services.StudentService;
@@ -17,15 +18,21 @@ public class StudentRegistration extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("WEB-INF/form.jsp").forward(request,response);
+        List<Student> students = service.getAllStudents();
+        request.setAttribute("students", students);
+        request.getRequestDispatcher("WEB-INF/form.jsp").forward(request, response);
     }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
-        Student student = new Student(firstName,lastName,email,12, LocalDate.now());
+        Student student = new Student(firstName, lastName, email, 12, LocalDate.now());
 
         service.addStudent(student);
+        request.setAttribute("message", student);
+
+        doGet(request, response); // Refresh the student list after adding
     }
 
     public void destroy() {
