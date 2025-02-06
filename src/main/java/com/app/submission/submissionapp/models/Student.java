@@ -1,4 +1,4 @@
-package com.app.submission.submissionapp.mdels;
+package com.app.submission.submissionapp.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
