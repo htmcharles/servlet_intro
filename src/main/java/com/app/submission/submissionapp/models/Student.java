@@ -1,9 +1,6 @@
 package com.app.submission.submissionapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -15,6 +12,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
+    @Transient
     private int age;
     private LocalDate birthDate;
 
@@ -70,7 +68,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return LocalDate.now().getYear() - birthDate.getYear();
     }
 
     public void setAge(int age) {
