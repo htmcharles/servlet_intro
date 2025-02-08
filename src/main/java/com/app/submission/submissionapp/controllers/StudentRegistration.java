@@ -27,14 +27,16 @@ public class StudentRegistration extends HttpServlet {
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
-        Student student = new Student(firstName, lastName, email, 12, LocalDate.now());
+        Student student = new Student(firstName, lastName, email, 22, LocalDate.now());
 
         service.addStudent(student);
-        request.setAttribute("message", student);
+        request.setAttribute("message", "Student added successfully!");
+
 
         doGet(request, response); // Refresh the student list after adding
     }
 
     public void destroy() {
     }
+
 }
