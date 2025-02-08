@@ -14,7 +14,7 @@ public class StudentRegistration extends HttpServlet {
     private String message;
 
     public void init() {
-        message = "Hello World!";
+        message = "Servlet init";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
