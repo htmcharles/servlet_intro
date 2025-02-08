@@ -9,28 +9,30 @@ import java.util.List;
 
 public class StudentService {
     // Hibernate SessionFactory
-    protected static SessionFactory sf = HibernateUtil.getSessionFactory();
-    protected static Session session;
+    protected static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    protected static Session hibernateSession;
 
     // Singleton pattern
-    private static StudentService studentService;
+    private static StudentService instance;
 
     public static synchronized StudentService getInstance() {
-        if (studentService == null) {
-            studentService = new StudentService();
+        if (instance == null) {
+            instance = new StudentService();
         }
-        return studentService;
+        return instance;
     }
-    public void addStudent(Student student) {
-        session = sf.openSession();
-        session.beginTransaction();
-        session.persist(student);
-        session.getTransaction().commit();
+
+    public void saveStudent(Student student) {
+        hibernateSession = sessionFactory.openSession();
+        hibernateSession.beginTransaction();
+        hibernateSession.persist(student);
+        hibernateSession.getTransaction().commit();
     }
-    public List<Student> getAllStudents() {
-        session = sf.openSession();
-        List<Student> students = session.createQuery("from Student").list();
-        session.close();
-        return students;
+
+    public List<Student> fetchAllStudents() {
+        hibernateSession = sessionFactory.openSession();
+        List<Student> studentList = hibernateSession.createQuery("from Student").list();
+        hibernateSession.close();
+        return studentList;
     }
 }
